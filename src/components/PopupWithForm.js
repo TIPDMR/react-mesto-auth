@@ -27,6 +27,8 @@ const PopupWithForm = ({
       document.removeEventListener('keydown', handleEscClose);
     };
   }, [isOpen]);
+
+
   return (
     <div
       className={`modal modal_form_${name} ${isOpen ? 'modal_visible' : ''}`}

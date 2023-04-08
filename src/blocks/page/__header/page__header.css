@@ -1,5 +1,7 @@
 .page__header {
   margin-top: 45px;
+  display: flex;
+  justify-content: space-between;
 }
 
 @media screen and (max-width: 575px) {

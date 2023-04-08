@@ -8,19 +8,23 @@
 @import url(./blocks/preloader/__text-words/preloader__text-words.css);
 @import url(./blocks/preloader/_hidden/preloader_hidden.css);
 
-
 /*Page*/
 @import url(./blocks/page/page.css);
+@import url(./blocks/page/__auth-registration-block/page__auth-registration-block.css);
 @import url(./blocks/page/__header/page__header.css);
 @import url(./blocks/page/__content/page__content.css);
 @import url(./blocks/page/__footer/page__footer.css);
 
 /*Header*/
 @import url(./blocks/header/header.css);
+@import url(./blocks/header/__menu-button/header__menu-button.css);
+@import url(./blocks/header/__menu-user-email/header__menu-user-email.css);
 @import url(./blocks/header/__logo/header__logo.css);
+@import url(./blocks/header/__menu-link/header__menu-link.css);
 
 /*Content*/
 @import url(./blocks/content/content.css);
+@import url(./blocks/content/__form/content__form.css);
 @import url(./blocks/content/__profile/content__profile.css);
 @import url(./blocks/content/__photo-gallery/content__photo-gallery.css);
 
@@ -71,7 +75,21 @@
 @import url(./blocks/modal/__figcaption/modal__figcaption.css);
 @import url(./blocks/modal/__img/modal__img.css);
 @import url(./blocks/modal/_zoom/modal_zoom_in.css);
+@import url(./blocks/modal/__tooltip-img/modal__tooltip-img.css);
+@import url(./blocks/modal/__tooltip-text/modal__tooltip-text.css);
+@import url(./blocks/modal/__container/_type/modal__container_type_tooltip.css);
 
 /*Footer*/
 @import url(./blocks/footer/footer.css);
 @import url(./blocks/footer/__copy/footer__copy.css);
+
+@import url(./blocks/auth-registration-block/auth-registration-block.css);
+@import url(./blocks/auth-registration-block/__link/auth-registration-block__link.css);
+@import url(./blocks/auth-registration-block/__button/auth-registration-block__button.css);
+@import url(./blocks/auth-registration-block/__button/_disabled/auth-registration-block__button_disabled.css);
+@import url(./blocks/auth-registration-block/__input/auth-registration-block__input.css);
+@import url(./blocks/auth-registration-block/__input-error/auth-registration-block__input-error.css);
+@import url(./blocks/auth-registration-block/__error/_visible/auth-registration-block__error_visible.css);
+@import url(./blocks/auth-registration-block/__input/_type/auth-registration-block__input_type_error.css);
+@import url(./blocks/auth-registration-block/__form/auth-registration-block__form.css);
+@import url(./blocks/auth-registration-block/__title/auth-registration-block__title.css);

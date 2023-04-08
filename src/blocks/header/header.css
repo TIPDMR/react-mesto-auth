@@ -1,6 +1,5 @@
 .header {
-  display: flex;
-  flex-direction: column;
+  font-family: 'Inter';
   box-sizing: border-box;
   max-width: 880px;
   width: 100%;
@@ -11,13 +10,12 @@
 
 @media screen and (max-width: 918px) {
   .header {
-    padding-left: 19px;
+    padding: 0 19px 40px 19px;
   }
 }
 
 @media screen and (max-width: 575px) {
   .header {
-    padding-left: 27px;
-    padding-bottom: 31.6px;
+    padding: 0 30px 31.6px;
   }
 }

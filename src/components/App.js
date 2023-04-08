@@ -12,12 +12,21 @@ import { CurrentUserContext } from '../contexts/CurrentUserContext';
 import { CardsContext } from '../contexts/CardsContext';
 import AddPlacePopup from './AddPlacePopup';
 import ConfirmDeleteCard from './ConfirmDeleteCard';
+import { Route, Routes, useNavigate } from 'react-router-dom';
+import Register from './Register';
+import Login from './Login';
+import ProtectedRoute from './ProtectedRoute';
+import InfoTooltip from './InfoTooltip';
+import errorImage from '../images/ui/error.svg';
+import successImage from '../images/ui/success.svg';
+import { register, authorize, checkToken } from '../utils/Auth';
 
 const App = () => {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
   const [isConfirmPopupOpen, setConfirmPopupOpen] = useState(false);
+  const [isTooltipPopupOpen, setIsTooltipPopupOpen] = useState(false);
   const [selectedCard, setSelectedCard] = useState({ isOpen: false });
   const [isPreloaderHide, setPreloaderHide] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -28,6 +37,11 @@ const App = () => {
     avatar: avatar,
   });
   const [loggedIn, setLoggedIn] = useState(false);
+  const [tooltipText, setTooltipText] = useState('');
+  const [tooltipImage, setTooltipImage] = useState('');
+  const [userEmail, setUserEmail] = useState('');
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     Promise.all([Api.getUserInfo(), Api.getInitialCards()])
@@ -38,6 +52,75 @@ const App = () => {
       .catch((err) => console.log(err))
       .finally(() => onPreloaderHide());
   }, []);
+
+  /**
+   * Проверка токена
+   */
+  useEffect(() => {
+    if (localStorage.getItem('jwt')) {
+      const jwt = localStorage.getItem('jwt');
+      if (jwt) {
+        checkToken(jwt).then((res) => {
+          if (res) {
+            setUserEmail(res.data.email);
+
+            setLoggedIn(true);
+            navigate('/', { replace: true });
+          }
+        });
+      }
+    }
+  }, []);
+
+  /**
+   * Выход
+   */
+  const handleExit = () => {
+    localStorage.removeItem('jwt');
+    setLoggedIn(false);
+    setUserEmail('');
+    navigate('/sign-in', { replace: true });
+  };
+  /**
+   * Авторизация
+   * @param email
+   * @param password
+   */
+  const handleLogin = (email, password) => {
+    authorize(email, password)
+      .then((data) => {
+        if (data.token) {
+          setUserEmail(email);
+          localStorage.setItem('jwt', data.token);
+          setLoggedIn(true);
+          navigate('/', { replace: true });
+        }
+      })
+      .catch((res) => {
+        setTooltipImage(errorImage);
+        setTooltipText(res);
+        setIsTooltipPopupOpen(true);
+      });
+  };
+
+  /**
+   * Регистрация
+   * @param email
+   * @param password
+   */
+  const handleRegister = (email, password) => {
+    register(email, password)
+      .then((res) => {
+        setTooltipImage(successImage);
+        setTooltipText('Вы успешно зарегистрировались!');
+        navigate('/sign-in', { replace: true });
+      })
+      .catch((res) => {
+        setTooltipImage(errorImage);
+        setTooltipText(res);
+      })
+      .finally(() => setIsTooltipPopupOpen(true));
+  };
 
   /**
    * Установка Like
@@ -157,6 +240,7 @@ const App = () => {
     setIsEditProfilePopupOpen(false);
     setIsAddPlacePopupOpen(false);
     setSelectedCard({ isOpen: false });
+    setIsTooltipPopupOpen(false);
   }
 
   function onCloseClickOverlay(e) {
@@ -169,16 +253,39 @@ const App = () => {
     <CurrentUserContext.Provider value={currentUser}>
       <CardsContext.Provider value={cards}>
         <div className="page">
-          <Header />
-          <Main
-            onEditAvatar={handleEditAvatarClick}
-            onEditProfile={handleEditProfileClick}
-            onAddPlace={handleAddPlaceClick}
-            onCardClick={handleCardClick}
-            onConfirmPopupOpen={handleConfirmPopupOpen}
-            onCardLike={handleCardLike}
-            onCardDelete={handleCardDelete}
-          />
+          <Header onExit={handleExit} userEmail={userEmail}/>
+          <Routes>
+            <Route
+              path="/sign-up"
+              element={
+                <Register isLoading={isLoading} loggedIn={loggedIn} onRegister={handleRegister} />
+              }
+              loggedIn={loggedIn}
+            />
+            <Route
+              path="/sign-in"
+              element={<Login isLoading={isLoading} loggedIn={loggedIn} onLogin={handleLogin} />}
+              loggedIn={loggedIn}
+              handleLogin={handleLogin}
+            />
+            <Route
+              path="/"
+              element={
+                <ProtectedRoute
+                  element={Main}
+                  path="/"
+                  onEditAvatar={handleEditAvatarClick}
+                  onEditProfile={handleEditProfileClick}
+                  onAddPlace={handleAddPlaceClick}
+                  onCardClick={handleCardClick}
+                  onConfirmPopupOpen={handleConfirmPopupOpen}
+                  onCardLike={handleCardLike}
+                  onCardDelete={handleCardDelete}
+                  loggedIn={loggedIn}
+                />
+              }
+            />
+          </Routes>
           <Footer />
           <EditProfilePopup
             isOpen={isEditProfilePopupOpen}
@@ -213,6 +320,13 @@ const App = () => {
             card={selectedCard}
             onClose={closeAllPopups}
             onCloseClickOverlay={onCloseClickOverlay}
+          />
+          <InfoTooltip
+            isOpen={isTooltipPopupOpen}
+            onClose={closeAllPopups}
+            onCloseClickOverlay={onCloseClickOverlay}
+            text={tooltipText} //"Что-то пошло не так! Попробуйте ещё раз."
+            image={tooltipImage} //"Что-то пошло не так! Попробуйте ещё раз."
           />
           <Preloader isHide={isPreloaderHide} />
         </div>

@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/TIPDMR/react-mesto-auth/static/css/main.57057e28.css",
+    "main.js": "/TIPDMR/react-mesto-auth/static/js/main.d06759b0.js",
+    "static/media/Inter-Medium.woff": "/TIPDMR/react-mesto-auth/static/media/Inter-Medium.9053572c46aeb4b16caa.woff",
+    "static/media/Inter-Black.woff": "/TIPDMR/react-mesto-auth/static/media/Inter-Black.c6938660eec019fefd68.woff",
+    "static/media/Inter-Regular.woff": "/TIPDMR/react-mesto-auth/static/media/Inter-Regular.8c206db99195777c6769.woff",
+    "static/media/Inter-Medium.woff2": "/TIPDMR/react-mesto-auth/static/media/Inter-Medium.293fd13dbca5a3e450ef.woff2",
+    "static/media/Inter-Black.woff2": "/TIPDMR/react-mesto-auth/static/media/Inter-Black.15ca31c0a2a68f76d2d1.woff2",
+    "static/media/Inter-Regular.woff2": "/TIPDMR/react-mesto-auth/static/media/Inter-Regular.c8ba52b05a9ef10f4758.woff2",
+    "static/media/error.svg": "/TIPDMR/react-mesto-auth/static/media/error.08f6d521da84261bdccda78d25dbba55.svg",
+    "static/media/success.svg": "/TIPDMR/react-mesto-auth/static/media/success.1c05f9baa65023ce599d8f6d72c92019.svg",
+    "static/media/header__logo.svg": "/TIPDMR/react-mesto-auth/static/media/header__logo.3d8293a241b315143f02a9df076e611b.svg",
+    "index.html": "/TIPDMR/react-mesto-auth/index.html",
+    "static/media/hearth-white.svg": "/TIPDMR/react-mesto-auth/static/media/hearth-white.f9cbbc232f4ed178be38.svg",
+    "static/media/trash.svg": "/TIPDMR/react-mesto-auth/static/media/trash.161265c632b9f887063c.svg",
+    "static/media/hearth-black.svg": "/TIPDMR/react-mesto-auth/static/media/hearth-black.d750ae7834bd9bfe5181.svg",
+    "static/media/close.svg": "/TIPDMR/react-mesto-auth/static/media/close.e7037ad5420e241f7a53.svg",
+    "static/media/edit_profile.svg": "/TIPDMR/react-mesto-auth/static/media/edit_profile.5b07a93637363fa9b217.svg",
+    "static/media/edit.svg": "/TIPDMR/react-mesto-auth/static/media/edit.5f7df902c26d761a5259.svg",
+    "static/media/add.svg": "/TIPDMR/react-mesto-auth/static/media/add.9d4893b84ffe6c9d13b3.svg",
+    "main.57057e28.css.map": "/TIPDMR/react-mesto-auth/static/css/main.57057e28.css.map",
+    "main.d06759b0.js.map": "/TIPDMR/react-mesto-auth/static/js/main.d06759b0.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.57057e28.css",
+    "static/js/main.d06759b0.js"
+  ]
+}

@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/react-mesto-auth/static/css/main.edd8b5e4.css",
-    "main.js": "/react-mesto-auth/static/js/main.dbedaf04.js",
+    "main.js": "/react-mesto-auth/static/js/main.78c43301.js",
     "static/media/Inter-Medium.woff": "/react-mesto-auth/static/media/Inter-Medium.9053572c46aeb4b16caa.woff",
     "static/media/Inter-Black.woff": "/react-mesto-auth/static/media/Inter-Black.c6938660eec019fefd68.woff",
     "static/media/Inter-Regular.woff": "/react-mesto-auth/static/media/Inter-Regular.8c206db99195777c6769.woff",
@@ -20,10 +20,10 @@
     "static/media/edit.svg": "/react-mesto-auth/static/media/edit.5f7df902c26d761a5259.svg",
     "static/media/add.svg": "/react-mesto-auth/static/media/add.9d4893b84ffe6c9d13b3.svg",
     "main.edd8b5e4.css.map": "/react-mesto-auth/static/css/main.edd8b5e4.css.map",
-    "main.dbedaf04.js.map": "/react-mesto-auth/static/js/main.dbedaf04.js.map"
+    "main.78c43301.js.map": "/react-mesto-auth/static/js/main.78c43301.js.map"
   },
   "entrypoints": [
     "static/css/main.edd8b5e4.css",
-    "static/js/main.dbedaf04.js"
+    "static/js/main.78c43301.js"
   ]
 }

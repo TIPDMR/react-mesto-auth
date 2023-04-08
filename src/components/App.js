@@ -60,14 +60,16 @@ const App = () => {
     if (localStorage.getItem('jwt')) {
       const jwt = localStorage.getItem('jwt');
       if (jwt) {
-        checkToken(jwt).then((res) => {
-          if (res) {
-            setUserEmail(res.data.email);
+        checkToken(jwt)
+          .then((res) => {
+            if (res) {
+              setUserEmail(res.data.email);
 
-            setLoggedIn(true);
-            navigate('/', { replace: true });
-          }
-        });
+              setLoggedIn(true);
+              navigate('/', { replace: true });
+            }
+          })
+          .catch((err) => console.log(err));
       }
     }
   }, []);
@@ -146,10 +148,10 @@ const App = () => {
     Api.delCard(card._id)
       .then((newCard) => {
         setCards((state) => state.filter((item) => item._id !== card._id));
+        closeAllPopups();
       })
       .catch((err) => console.log(err))
       .finally(() => {
-        closeAllPopups();
         setIsLoading(false);
       });
   }
@@ -253,7 +255,7 @@ const App = () => {
     <CurrentUserContext.Provider value={currentUser}>
       <CardsContext.Provider value={cards}>
         <div className="page">
-          <Header onExit={handleExit} userEmail={userEmail}/>
+          <Header onExit={handleExit} userEmail={userEmail} />
           <Routes>
             <Route
               path="/sign-up"

@@ -167,10 +167,10 @@ const App = () => {
     Api.setUserInfo(name, about)
       .then((res) => {
         setCurrentUser(res);
+        closeAllPopups();
       })
       .catch((err) => console.log(err))
       .finally(() => {
-        closeAllPopups();
         setIsLoading(false);
       });
   }
@@ -185,10 +185,10 @@ const App = () => {
     Api.setAvatar(avatar)
       .then((res) => {
         setCurrentUser(res);
+        closeAllPopups();
       })
       .catch((err) => console.log(err))
       .finally(() => {
-        closeAllPopups();
         setIsLoading(false);
       });
   }
@@ -203,10 +203,10 @@ const App = () => {
     Api.setCard(name, link)
       .then((res) => {
         setCards([res, ...cards]);
+        closeAllPopups();
       })
       .catch((err) => console.log(err))
       .finally(() => {
-        closeAllPopups();
         setIsLoading(false);
       });
   }
